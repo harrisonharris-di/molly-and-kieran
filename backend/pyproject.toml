@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "wedding-backend"
+version = "0.1.0"
+description = "Backend for Molly & Kieran's wedding RSVP system"
+authors = ["You <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flask = "^3.0"
+redis = "^5.0"
+flask-cors = "^4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
