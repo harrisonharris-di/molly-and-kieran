@@ -1,9 +1,11 @@
 # backend/app.py
 from flask import Flask, request, jsonify
+import os
 import redis
 
 app = Flask(__name__)
-r = redis.Redis(host='localhost', port=6379, decode_responses=True)
+redis_host = os.environ.get('REDIS_HOST', 'localhost')
+r = redis.Redis(host=redis_host, port=6379, decode_responses=True)
 
 @app.route('/api/search')
 def search():
@@ -20,3 +22,7 @@ def rsvp():
         r.hset(name, 'rsvp', 'yes')
         return '', 204
     return 'Name not found', 404
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
